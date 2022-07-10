@@ -1,5 +1,7 @@
 {
   "nixEnvSelector.nixFile": "${workspaceRoot}/shell.nix",
+  "vscode-dhall-lsp-server.trace.server": "verbose",
+  "vscode-dhall-lsp-server.executable": "dhall-lsp-server",
   "customLocalFormatters.formatters": [
     {
       "command": "treefmt -q --stdin ${file}",
@@ -9,6 +11,7 @@
         "markdown",
         "nix",
         "toml",
+        "dhall"
       ]
     }
   ],
@@ -25,6 +28,9 @@
     "editor.defaultFormatter": "jkillian.custom-local-formatters"
   },
   "[markdown]": {
+    "editor.defaultFormatter": "jkillian.custom-local-formatters"
+  },
+  "[dhall]": {
     "editor.defaultFormatter": "jkillian.custom-local-formatters"
   },
   "yaml.schemas": {
