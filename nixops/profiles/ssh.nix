@@ -1,6 +1,4 @@
-{config, ...}: let
-  secrets = builtins.fromJSON (builtins.readFile ../secrets.json);
-in {
+{config, ...}: {
   services.openssh = {
     enable = true;
     passwordAuthentication = false;
@@ -8,6 +6,8 @@ in {
   };
 
   users.users.root = {
-    openssh.authorizedKeys.keys = secrets.ssh.known_hosts;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ02RYFEONAr/5a3fokBYHUFVPqF8G64DxhV5RGu7gtK"
+    ];
   };
 }
