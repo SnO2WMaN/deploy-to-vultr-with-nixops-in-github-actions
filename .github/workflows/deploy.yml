@@ -2,6 +2,10 @@ name: Deploy
 
 on:
   push:
+    branches:
+      - main
+    paths:
+      - "nixops/**"
 
 jobs:
   deploy:
