@@ -3,6 +3,9 @@ packages = [
   "alejandra",
   "dprint",
   "nixops-plugged",
+  "dhall",
+  "dhall-json",
+  "dhall-lsp-server",
 ]
 
 [[commands]]

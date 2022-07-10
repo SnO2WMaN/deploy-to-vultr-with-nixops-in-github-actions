@@ -1,0 +1,18 @@
+name: Deploy
+
+on:
+  push:
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: cachix/install-nix-action@v15
+      - uses: cachix/cachix-action@v10
+        with:
+         name: sno2wman
+         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - run: nix-shell --run "cat ./nixops/secrets.dhall | dhall-to-json > ./nixops/secrets.json"
+      - run: nix-shell --run "nixops deploy"
