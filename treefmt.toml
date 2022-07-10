@@ -10,3 +10,10 @@ includes = [
   "*.toml",
   "*.md",
 ]
+
+[formatter.dhall-format]
+command = "dhall"
+options = ["format"]
+includes = [
+  "*.dhall",
+]
