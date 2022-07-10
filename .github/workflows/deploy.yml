@@ -17,7 +17,7 @@ jobs:
       - uses: shimataro/ssh-key-action@v2.3.1
         with:
           key: ${{ secrets.SSH_KEY }}
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
           name: id_ed25519
       - run: nix-shell --run "cat ./nixops/secrets.dhall | dhall-to-json > ./nixops/secrets.json"
         env:
