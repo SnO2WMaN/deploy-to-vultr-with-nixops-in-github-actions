@@ -47,4 +47,8 @@
     wget
     bottom
   ];
+
+  # dont make documents
+  documentation.enable = false;
+  documentation.nixos.enable = false;
 }
