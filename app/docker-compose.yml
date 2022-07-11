@@ -1,0 +1,12 @@
+version: "3.9"
+
+name: gha-nixops-test
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - published: 8080
+        target: 80
