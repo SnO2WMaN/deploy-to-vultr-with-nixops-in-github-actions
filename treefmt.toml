@@ -9,6 +9,12 @@ includes = [
   "*.json",
   "*.toml",
   "*.md",
+  "*.js",
+  "*.jsx",
+  "*.ts",
+  "*.tsx",
+  "*.cjs",
+  "*.mjs",
 ]
 
 [formatter.dhall-format]

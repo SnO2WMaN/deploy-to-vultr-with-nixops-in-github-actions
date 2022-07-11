@@ -6,6 +6,8 @@ packages = [
   "dhall",
   "dhall-json",
   "dhall-lsp-server",
+  "nodejs-18_x",
+  "nodePackages.pnpm",
 ]
 
 [[commands]]
