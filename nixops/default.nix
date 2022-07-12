@@ -8,5 +8,5 @@
   defaults = {...}: {
   };
 
-  webserver = import ./webserver;
+  primary = import ./hosts/primary;
 }

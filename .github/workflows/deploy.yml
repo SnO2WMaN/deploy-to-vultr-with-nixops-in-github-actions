@@ -61,9 +61,9 @@ jobs:
               StrictHostKeyChecking no
               UserKnownHostsFile=/dev/null
             Host webserver
-              HostName ${{secrets.WEBSERVER_HOST}} 
+              HostName ${{secrets.PRIMARY_HOST}} 
               User root
-              Port ${{ secrets.WEBSERVER_PORT }}
+              Port ${{ secrets.PRIMARY_PORT }}
               IdentityFile ~/.ssh/id_ed25519
       - uses: cachix/install-nix-action@v17
       - uses: cachix/cachix-action@v10
@@ -72,6 +72,6 @@ jobs:
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - run: nix-shell --run "cat ./nixops/secrets.dhall | dhall-to-json > ./nixops/secrets.json"
         env:
-          WEBSERVER_HOST: ${{secrets.WEBSERVER_HOST}}
-          WEBSERVER_PORT: ${{secrets.WEBSERVER_PORT}}
+          PRIMARY_HOST: ${{secrets.PRIMARY_HOST}}
+          PRIMARY_PORT: ${{secrets.PRIMARY_PORT}}
       - run: nix-shell --run "nixops deploy"

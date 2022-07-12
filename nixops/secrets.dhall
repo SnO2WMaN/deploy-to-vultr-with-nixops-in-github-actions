@@ -1,5 +1,5 @@
-let webserver = { host = env:WEBSERVER_HOST as Text, port = env:WEBSERVER_PORT }
+let primary = { host = env:PRIMARY_HOST as Text, port = env:PRIMARY_PORT }
 
-let hosts = { webserver }
+let hosts = { primary }
 
 in  { hosts }
