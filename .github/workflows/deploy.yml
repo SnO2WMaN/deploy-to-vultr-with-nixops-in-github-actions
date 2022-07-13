@@ -16,33 +16,31 @@ jobs:
           filters: |
             nixops:
               - 'nixops/**'
-            apps-frontend:
-              - 'apps/frontend/**'
 
-  docker-frontend-app:
-    name: Frontend App
-    runs-on: ubuntu-latest
-    needs: changes
-    if: ${{ needs.changes.outputs.apps-frontend == 'true' }}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: docker/setup-qemu-action@v2
-      - uses: docker/setup-buildx-action@v2
-      - uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/metadata-action@v4
-        id: meta
-        with:
-          images: ghcr.io/${{ github.repository }}-apps-frontend
-      - uses: docker/build-push-action@v3
-        with:
-          context: ./apps/frontend
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+  # docker-frontend-app:
+  #   name: Frontend App
+  #   runs-on: ubuntu-latest
+  #   needs: changes
+  #   if: ${{ needs.changes.outputs.apps-frontend == 'true' }}
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: docker/setup-qemu-action@v2
+  #     - uses: docker/setup-buildx-action@v2
+  #     - uses: docker/login-action@v2
+  #       with:
+  #         registry: ghcr.io
+  #         username: ${{ github.actor }}
+  #         password: ${{ secrets.GITHUB_TOKEN }}
+  #     - uses: docker/metadata-action@v4
+  #       id: meta
+  #       with:
+  #         images: ghcr.io/${{ github.repository }}-apps-frontend
+  #     - uses: docker/build-push-action@v3
+  #       with:
+  #         context: ./apps/frontend
+  #         push: true
+  #         tags: ${{ steps.meta.outputs.tags }}
+  #         labels: ${{ steps.meta.outputs.labels }}
 
   nixops:
     name: NixOps
